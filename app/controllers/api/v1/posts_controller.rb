@@ -12,12 +12,6 @@ module Api
         rebder json: @posts
       end
 
-      def update
-        @posts = Poat.find(params[:id])
-        @posts.update_attributes(isCompleted: params[:isCompleted])
-        render json: @posts
-      end
-
       def destroy
         @posts = Post.find(params[:id])
         if @posts.destroy
@@ -25,6 +19,12 @@ module Api
         else
           render json: @posts.errors, status: :unprocessable_entity
         end
+      end
+
+      def update
+        @posts = Post.find(params[:id])
+        @posts.update_attributes(task: params[:task])
+        render json: @posts
       end
 
     end

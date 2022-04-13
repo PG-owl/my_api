@@ -23,10 +23,10 @@ module Api
 
       def update
         @posts = Post.find(params[:id])
-        @posts.update_attributes(task: params[:task])
+        @posts.update(task: params[:task])
         render json: @posts
       end
-
+      
     end
   end
 end

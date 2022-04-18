@@ -8,23 +8,23 @@ module Api
       end
 
       def create
-        @posts = Post.create(task: params[:task])
-        rebder json: @posts
+        @post = Post.create(task: params[:task])
+        rebder json: @post
       end
 
       def destroy
-        @posts = Post.find(params[:id])
-        if @posts.destroy
-          head :no_content, status: :ok
+        @post = Post.find(params[:id])
+        if @post.destroy
+          head :no_content
         else
-          render json: @posts.errors, status: :unprocessable_entity
+          render json: @post.errors, status: :unprocessable_entity
         end
       end
 
       def update
-        @posts = Post.find(params[:id])
-        @posts.update(task: params[:task])
-        render json: @posts
+        @post = Post.find(params[:id])
+        @post.update(task: params[:task])
+        render json: @post
       end
       
     end
